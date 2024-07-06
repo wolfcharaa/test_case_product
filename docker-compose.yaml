@@ -1,0 +1,23 @@
+services:
+  test:
+    image: test
+    container_name: test
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/src
+    depends_on:
+      - test-db
+    ports:
+      - 8080:9000
+  test-db:
+    container_name: test-db
+    image: postgres:15.6-alpine3.19
+    ports:
+      - '127.0.0.1:29102:5432'
+    environment:
+      TZ: Europe/Moscow
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: test
