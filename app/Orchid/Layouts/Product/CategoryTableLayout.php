@@ -20,7 +20,7 @@ class CategoryTableLayout extends Table
     protected function columns(): iterable
     {
         return [
-            TD::make()->render(static fn (Product $product) => CheckBox::make('id')->value($product->id)),
+            TD::make()->render(static fn (Category $category) => CheckBox::make('id')),
             TD::make('id', 'ID')->sort()->filter(TD::FILTER_NUMERIC),
             TD::make('name', 'Наименование продукта')->sort()->filter(),
             TD::make('products', 'Привязанные продукты')->sort()->filter()->render(static function (Category $category) {

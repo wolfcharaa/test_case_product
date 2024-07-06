@@ -20,7 +20,7 @@ class ProductTableLayout extends Table
     protected function columns(): iterable
     {
         return [
-            TD::make()->render(static fn(Product $product) => CheckBox::make('id')->render()),
+            TD::make()->render(static fn(Product $product) => CheckBox::make()),
 
             TD::make('id', 'ID')->sort()->filter(TD::FILTER_NUMERIC),
             TD::make('created_at', 'Время создания')->sort()->filter()->render(
