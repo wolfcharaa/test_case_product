@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Orchid\Screens\Product;
 
 use App\Models\Product;
+use App\Orchid\Layouts\Delivery\Zone\ZoneSelection;
 use App\Orchid\Layouts\Product\ProductTableLayout;
+use App\Orchid\Layouts\ProductSelection;
 use Illuminate\Http\Request;
 use mysql_xdevapi\Table;
 use Orchid\Screen\Actions\Link;
@@ -24,6 +26,7 @@ class ProductListScreen extends Screen
         return [
             'products' =>
                 \App\Models\Product::query()
+                    ->filtersApplySelection(ProductSelection::class)
                     ->defaultSort('id', 'ASC')
                     ->filters()
                     ->paginate(25)
@@ -65,7 +68,8 @@ class ProductListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            ProductTableLayout::class
+            ProductSelection::class,
+            ProductTableLayout::class,
         ];
     }
 
