@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Установка зависимостей приложения
+composer install
+
 # проверка на наличие env файла
 [ -f .env ] || cp .env.example .env
 

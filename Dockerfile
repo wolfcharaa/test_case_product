@@ -45,9 +45,6 @@ RUN chown -R test_case:test_case /src
 # Переключение на пользователя
 USER test_case
 
-# Установка зависимостей приложения
-RUN composer install
-
 # Добавление прав на выполнение скрипта
 RUN chmod +x ./entrypoint.sh
 
